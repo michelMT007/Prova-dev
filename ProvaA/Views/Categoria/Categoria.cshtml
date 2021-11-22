@@ -1,0 +1,46 @@
+﻿@*@model  List<ProvaA.Models.src.mac.Categorias>*@
+@model  IEnumerable<ProvaA.ViewModels.CategoriaViewModel>
+
+@{
+    ViewBag.Title = "Categoria";
+    Layout = "~/Views/Shared/_Layoutmac.cshtml";
+}
+
+<h2>Categorias de Produtos</h2>
+<div>
+    <table class="dados-os table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Identificador</th>
+                <th>Categoria</th>
+                @*<th>Código</th>*@
+                <th>Descrição</th>
+                <th>Ativo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var c in Model)
+            {
+                <tr>
+                    <td>@c.Id</td>
+                    <td>@c.NomeCategoria</td>
+                    @*<td>@c.Codigo</td>*@
+                    <td>@c.Descricao</td>
+                    <td>
+                        @if (c.Ativo)
+                        {<a>Ativo</a>}
+                        else
+                        {<a>Inativo</a>}
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <div> </div>
+    <div class="footer">
+        @*<button type="button" class="btn btn-primary btn-lg" >Adicionar nova Categoria</button>*@
+        <a href='@Url.Action("CategoriaCadastro", "Categoria")' class="btn btn-primary">Adicionar nova Categoria</a>
+    </div>
+</div>
+    

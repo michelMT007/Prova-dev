@@ -1,0 +1,127 @@
+﻿@model ProvaA.ViewModels.ProdutoViewModel
+
+@{
+    ViewBag.Title = "Cadastro";
+    Layout = "~/Views/Shared/_Layoutmac.cshtml";
+}
+<h2>Cadastro de Produtos</h2>
+<form class="form-group" method="post">
+    <div class="form-group row">
+        
+            @Html.LabelFor(Model => Model.NomeProduto)
+            @Html.EditorFor(Model => Model.NomeProduto, new { HtmlAttribute = new { size = 300, maxlength = 15, @class = "form-control" } })
+            @Html.ValidationMessageFor(model => Model.NomeProduto, "", new { @class = "text-danger" })
+    </div>   
+    <div class="form-group row">
+        @Html.LabelFor(Model => Model.DescricaoProduto)
+        @Html.EditorFor(Model => Model.DescricaoProduto, new { HtmlAttribute = new { size = 300, maxlength = 15, @class = "form-control" } })
+        @Html.ValidationMessageFor(model => Model.DescricaoProduto, "", new { @class = "text-danger" })
+
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(Model => Model.Ativo)
+        @Html.CheckBoxFor(Model => Model.Ativo, new { HtmlAttribute = new { @class = "form-control" } })
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(Model => Model.CodigoBarras)
+        @Html.EditorFor(Model => Model.CodigoBarras, new { HtmlAttribute = new { size = 300, maxlength = 15, @class = "form-control" } })
+        @Html.ValidationMessageFor(model => Model.CodigoBarras, "", new { @class = "text-danger" })
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-10">
+            <input type="submit" name="cadcategoria" id="cadcategoria" value="Cadastrar" class="btn btn-primary">
+        </div>
+    </div>
+</form>
+
+
+<script type="text/javascript">
+    $('cadcategoria').click(function () {
+        var url = "http://localhost:60498/Produto/Cadastro";
+        var codbar = $("#CodigoBarras").val();
+        var nomeprod = $("#NomeProduto").val();
+        var desc = $("#DescricaoProduto").val();
+        var ativo = $("#Ativo").val();
+        var valor = $("#Valor").val();
+        var quant = $("#QuantidadeEstoque").val();
+
+        var status;
+        if (ativo == "Ativo") { status = 1; } else { status = 0; }
+
+        $.post(url, { CodigoBarras: codbar, Descricao: desc, Ativo: status }, function (data) {
+            $("#msg").html(data);
+        });
+    })
+
+</script>
+
+
+@*@*<h2>Cadastro de Categorias de Proodutos</h2>
+<div class="modal fade" id="NovaCategoria">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" data-dismiss="modal" class="close">
+                    <span>&times;</span>
+                </button>
+                <h4 class="modal-title">Nova Categoria</h4>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-xs-12">
+                            <label class="control-label">Código da OS</label>
+                            <p class="form-control-static">65151</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-5">
+                            
+                        @* ----------------------------------------------------------- *@
+                            @*@Html.LabelFor(model => model.)*@
+                        @* -- Aqui e o drop busca categorias e mostrar nome categoria- *@
+                                
+
+@*<option value="">Selecione...</option>
+                                <option value="1">DVD CD BLUERAY</option>
+                                <option value="2">ELETRÔNICOS</option>
+                                <option value="3">BRINQUEDOS</option>
+                            </select>
+                        </div>
+                        <div class="form-group has-warning col-sm-7">
+                            <label class="control-label" for="Servicos">Serviços</label>
+                            <select id="Servicos" class="form-control">
+                                <option value="">Selecione...</option>
+                                <option value="1">Ajuste de Data/Hora</option>
+                                <option value="2">Conserto de Engrenagem</option>
+                                <option value="3">Troca de Bateria</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group has-error col-xs-12">
+                            <label class="control-label" for="Observacao">Observação</label>
+                            <textarea id="Observacao" class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group has-success col-sm-4">
+                            <label class="control-label" for="Valor">Valor</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">R$</div>
+                                <input type="text" name="valor" id="Valor" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-danger">Limpar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> 
+"@

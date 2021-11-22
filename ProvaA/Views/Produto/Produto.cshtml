@@ -1,0 +1,152 @@
+﻿@model List<ProvaA.ViewModels.ProdutoViewModel>
+
+@{
+    ViewBag.Title = "Produtos";
+    Layout = "~/Views/Shared/_Layoutmac.cshtml";
+}
+<h2>Produtos</h2>
+<div>
+    <table class="dados-os table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Identificador</th>
+                <th>Categoria</th>
+                <th>Código</th>
+                <th>Descrição</th>
+                <th>Ativo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var prod in Model)
+            {
+                <tr>
+                    <td>@prod.Id</td>
+                    <td>@prod.CodigoBarras</td>
+                    <td>@prod.NomeProduto</td>
+                    <td>@prod.DescricaoProduto</td>
+                    <td>@prod.Ativo</td>
+                    <td>@prod.Valor</td>
+                    <td>@prod.QuantidadeEstoque</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Adicionar nova Categoria</button>
+    </div>
+</div>
+    @*<div class="container">
+
+        <!-- Trigger the modal with a button -->
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Cadastro de Categorias</h4>
+                    </div>
+                    <div class="">
+
+                        <div class="modal-body">
+                            <form method="post" id="insert_form">
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Código de Barras</label>
+                                    <div class="col-sm-10">
+                                        <input name="codbarras" type="text" class="form-control" id="cadbarrastxt" placeholder="Código de barras">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Nome Produtos</label>
+                                    <div class="col-sm-10">
+                                        <input name="nomeprod" type="text" class="form-control" id="nomeprodtxt" placeholder="Produto">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Código de Barras</label>
+                                    <div class="col-sm-10">
+                                        @Html.DropDownListFor(prod => prod.)    
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Código de Barras</label>
+                                    <div class="col-sm-10">
+                                        <input name="descricao" type="text" class="form-control" id="descricaotxt" placeholder="Descricão">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Código de Barras</label>
+                                    <div class="col-sm-10">
+                                        <input name="valor" type="text" class="form-control" id="valortxt" placeholder="Valor">
+                                    </div>
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                        Dropdown Example
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Opcao 1</a></li>
+                                        <li><a href="#">Opcao 2</a></li>
+                                        <li><a href="#">Opcao 3</a></li>
+                                        <li><a href="#">Opcao 4</a></li><li>
+                                        <li><a href="#">Opcao 5</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Ativado</label>
+                                    <div class="col-sm-10">
+
+                                        <input type="checkbox" id="prodativochk" name="ativo" checked>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-10">
+                                        <input type="submit" name="CadUser" id="CadUser" value="Cadastrar" class="btn btn-outline-success">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <!--<div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                 Modal content
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Some text in the modal.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>-->
+
+    </div>*@
+
